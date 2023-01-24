@@ -14,7 +14,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 # Install requirements.
 RUN yum makecache \
- && yum -y install deltarpm epel-release initscripts \
+ && yum -y install epel-release initscripts \
  && yum -y update \
  && yum -y install \
       sudo \
