@@ -19,9 +19,7 @@ RUN yum makecache \
  && yum -y install \
       sudo \
       which \
-      python-pip \
       gcc \
-      python-devel \
       ca-certificates \
  && yum clean all
 
