@@ -21,6 +21,7 @@ RUN yum makecache \
       which \
       gcc \
       ca-certificates \
+      NetworkManager \
  && yum clean all
 
 # Disable requiretty.
