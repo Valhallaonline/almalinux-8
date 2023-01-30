@@ -25,6 +25,8 @@ RUN dnf makecache \
       NetworkManager \
  && dnf clean all
 
+RUN rm -rf /var/cache/dnf/baseos*
+
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
