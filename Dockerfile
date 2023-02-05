@@ -3,7 +3,7 @@ FROM almalinux:8
 LABEL maintainer="Valhallaonline"
 ENV container=docker
 
-RUN dnf -y update; dnf clean all; \
+RUN yum -y update; yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\
@@ -14,18 +14,16 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 # Install requirements.
-RUN dnf makecache \
- && dnf -y install epel-release initscripts \
- && dnf -y update \
- && dnf -y install \
+RUN yum makecache \
+ && yum -y install epel-release initscripts \
+ && yum -y update \
+ && yum -y install \
       sudo \
       which \
       gcc \
       ca-certificates \
       NetworkManager \
- && dnf clean all
-
-RUN dnf clean all
+ && yum clean all
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
