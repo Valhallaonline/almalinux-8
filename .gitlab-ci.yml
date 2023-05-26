@@ -10,6 +10,8 @@ stages:
 variables:
   TEST_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   RELEASE_TAG: $CI_REGISTRY_IMAGE:latest
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_DRIVER: overlay2
 
 before_script:
   - docker info
